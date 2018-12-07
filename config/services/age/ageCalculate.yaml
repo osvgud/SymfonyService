@@ -1,0 +1,3 @@
+services:
+  app.age.age_calculate_service:
+    class: App\Age\AgeCalculateService

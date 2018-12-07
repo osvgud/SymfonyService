@@ -2,6 +2,9 @@ imports:
     - { resource: services/externalApi/yahoo.yaml}
     - { resource: services/externalApi/google.yaml}
     - { resource: services/weather.yaml}
+    - { resource: services/age/adultCheck.yaml}
+    - { resource: services/age/ageCalculate.yaml}
+    - { resource: services/age/ageCommand.yaml}
 
 # This file is the entry point to configure your own services.
 # Files in the packages/ subdirectory configure your dependencies.
@@ -13,7 +16,7 @@ parameters:
 services:
     # default configuration for services in *this* file
     _defaults:
-        autowire: true      # Automatically injects dependencies in your services.
+        autowire: false      # Automatically injects dependencies in your services.
         autoconfigure: true # Automatically registers your services as commands, event subscribers, etc.
         public: false       # Allows optimizing the container by removing unused services; this also means
                             # fetching services directly from the container via $container->get() won't work.
@@ -40,3 +43,7 @@ services:
     App\Controller\WeatherController:
         bind:
             $weatherLoaderService: '@app.weather.loader_service'
+
+    App\Command\AgeCalculatorCommand:
+        bind:
+            $ageCommandManager: '@app.age.age_command_manager'

@@ -1,0 +1,6 @@
+services:
+    app.age.age_command_manager:
+        class: App\Age\AgeCommandManager
+        arguments:
+            - '@app.age.age_calculate_service'
+            - '@app.age.adult_check_service'
